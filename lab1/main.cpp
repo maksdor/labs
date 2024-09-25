@@ -46,7 +46,6 @@ int main()
 		cout << a << endl;
 	else
 		cout << b << endl;
-
-	return 0;
+	return 0
 }		
 
