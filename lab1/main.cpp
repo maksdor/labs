@@ -1,4 +1,4 @@
-#include <iostream>
+	#include <iostream>
 #include <locale.h>
 using namespace std;
 
@@ -9,7 +9,7 @@ int main()
 	char ch1 = 125, ch2 = 2;
 	cout << "Тип данных: Целочисленные:" << endl;
 	cout << "'char', 1 байт, -128...127" << endl;
-	cout << "ch1 = " << char(ch1) << ", ch2 = " << char(ch2) << ", ch1 + ch2 = " << endl;
+	cout << "ch1 = " << int(ch1) << ", ch2 = " << int(ch2) << ", ch1 + ch2 = " << ch1 + ch2 << endl;
 	short sh1 = 32500, sh2 = 32000;
 	cout << "'short', 2 байта, -32768...32767" << endl;
 	cout << "sh1 = " << sh1 << ", sh2 = " << sh2 << ", sh1 - sh2 = " << sh1 - sh2 << endl;
