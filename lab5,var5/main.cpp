@@ -23,34 +23,33 @@ int main()
 	for (i = 0; i < max; ++i)
 	{
 		if (numbers[i] < 0 && (floor(numbers[i]) - numbers[i]) != 0)
+		{
 			sum *= numbers[i];
-		else
-			continue;
+			if (numbers[i] < min)
+				min = numbers[i];
+				p = i;
+		}
 	}
-	cout << sum << endl;
-	for (i = 0; i < max; ++i)
+	if (min != 0 && sum != 1)
 	{
-		if ((numbers[i] < 0 && (floor(numbers[i]) - numbers[i]) != 0) && (numbers[i] < min))
-			min = numbers[i], p = i;
-		else
-			continue;
+		cout << "Произведение: " << sum << endl;
+		cout << "Минимум: " << min << " под номером: " << p + 1 << endl;
 	}
-	cout << min << " " << p+1 << endl;
+	else
+		cout << "Отсуствуют числа подходящие под условие" << endl;
 
 	//2
 
 	int n;
 	cout << "n: ";
 	cin >> n;
-	int x{}, minx = 9, ln{};
-	string str_n = to_string(n);
-	while (x < str_n.length())
+	int minx = 9, ln{};
+	while (n > 0)
 	{
 		ln = n % 10;
 		if (ln < minx)
 			minx = ln;
 		n /= 10;
-		x++;
 	}
-	cout << ln;
+	cout << minx;
 }
