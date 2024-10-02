@@ -26,8 +26,10 @@ int main()
 		{
 			sum *= numbers[i];
 			if (numbers[i] < min)
+			{
 				min = numbers[i];
 				p = i;
+			}
 		}
 	}
 	if (min != 0 && sum != 1)
