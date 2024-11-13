@@ -140,16 +140,16 @@ int main()
 	}
 	
 	for (j = 0; j < M; j++)
-	{
+			{
 		A[curi][j] = 9999;
-	}
+			}
 
 	for (i = 0; i < N; i++)
 	{
 		for (j = 0; j < M; j++) 
 			cout << A[i][j] << " ";
 		cout << endl;
-	}
+		}
 
 	/// 4 ///
 
