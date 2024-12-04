@@ -82,6 +82,42 @@ int main()
 		cin >> mass[i1];
 		i1++;
 	}
+	for (i = 0; i < n-1; i++)
+	{
+		for (j = i+1; j < n; j++)
+		{
+			if (summa(mass[i]) > summa(mass[j]))
+			{
+				int t = mass[i];
+				mass[i] = mass[j];
+				mass[j] = t;
+			}
+			if (summa(mass[i]) == summa(mass[j]))
+			{
+				if (firstDigit(mass[i]) > firstDigit(mass[j]))
+				{
+					int t = mass[i];
+					mass[i] = mass[j];
+					mass[j] = t;
+				}
+			}
+			if (summa(mass[i]) == summa(mass[j]))
+			{
+				if (firstDigit(mass[i]) == firstDigit(mass[j]))
+				{
+					if (mass[i] > mass[j])
+					{
+						int t = mass[i];
+						mass[i] = mass[j];
+						mass[j] = t;
+					}
+				}
+			}
+		}
+	}
+	for (int i = 0; i < n; i++)
+		cout << mass[i] << '\t';
+	cout << endl;
 
 	i1 = 0;
 	while (i1 < n)
@@ -178,6 +214,17 @@ int main()
 			continue;
 		posled[j2] = posled[i2];
 		j2++;
+
+	/// 4 ///
+
+	cout << "¬веди 10 чисел: ";
+	const int n2 = 10;
+	int posled[n2];
+	int  i2{}, j2{};
+	while (i2 < n2)
+	{
+		cin >> posled[i2];
+		i2++;
 	}
 	n2 = j2;
 
