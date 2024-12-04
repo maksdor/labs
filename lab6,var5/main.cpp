@@ -14,9 +14,23 @@ int summa(int a)
 	return s;
 }
 
+int firstDigit(int b)
+{
+	int c{};
+		while (b > 0)
+		{
+			c = b % 10;
+			b /= 10;
+		}
+		return c;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Rus");
+
+	/// 1 ///
+		
 	cout << "¬веди 5 чисел: ";
 	const int n = 5;
 	long long numbers[n];
@@ -41,9 +55,9 @@ int main()
 	}
 	if (sum == 19)
 	{
-		for (i = 0; i < n; i++)
+		for (i = 0; i < n-1; i++)
 		{
-			for (j = i; j < n; j++)
+			for (j = i+1; j < n; j++)
 			{
 				if (numbers[i] < numbers[j])
 				{
@@ -55,36 +69,135 @@ int main()
 		}
 	}
 	for (int i = 0; i < n; i++)
-		std::cout << numbers[i] << '\t';
-	std::cout << std::endl;
+		cout << numbers[i] << '\t';
+	cout << endl;
 
-	// 2
+	/// 2 /// 
 
-	cout << "¬веди 7 чисел: ";
-	const int n1 = 7;
-	long long numbers1[n1];
-	int  i1{}, j1{};
-	while (i1 < n1)
+	cout << "¬веди 5 чисел: ";
+	int mass[n], mass_sum[n];
+	int  i1{}, sum1{}, j1{};
+	while (i1 < n)
 	{
-		cin >> numbers1[i1];
+		cin >> mass[i1];
 		i1++;
 	}
 
-	for (i1 = 0; i1 < n1; i1++)
+	i1 = 0;
+	while (i1 < n)
 	{
-		for (j1 = i1; j1 < n1; j1++)
+		mass_sum[i] = summa(mass[i]);
+	}
+
+	for (i = 0; i < n-1; i++)
+	{
+		for (j = i+1; j < n; j++)
 		{
-			if (numbers1[i1] > numbers1[j1])
+			if (mass_sum[i] > mass_sum[j])
 			{
-				int t1 = numbers1[i1];
-				numbers1[i1] = numbers1[j1];
-				numbers1[j1] = t1;
+				int t = mass[i];
+				mass[i] = mass[j];
+				mass[j] = t;
+			}
+			else if (mass_sum[i] == mass_sum[j])
+			{
+				if (firstDigit(i) > firstDigit(j))
+				{
+					int t = mass[i];
+					mass[i] = mass[j];
+					mass[j] = t;
+				}
+				else if (firstDigit(i) == firstDigit(j))
+				{
+					if (mass[i] > mass[j])
+					{
+						int t = mass[i];
+						mass[i] = mass[j];
+						mass[j] = t;
+					}
+				}
 			}
 		}
 	}
-	for (int i = 0; i < n1; i++)
-		std::cout << numbers1[i] << '\t';
-	std::cout << std::endl;
+	for (int i = 0; i < n; i++)
+		cout << mass[i] << '\t';
+	cout << endl;
 
+	/// 3 ///
+	cout << "¬веди 9 чисел: ";
+	const int N = 3, M = 3;
+	int A[N][M], summax{}, curi{};
+	for (i = 0; i < N; i++)
+		for (j = 0; j < M; j++)
+			cin >> A[i][j];
 
+	for (i = 0; i < N; i++)
+	{
+		int sumcur = 0;
+		for (j = 0; j < M; j++)
+			sumcur += abs(A[i][j]);
+		if (sumcur > summax)
+		{
+			summax = sumcur;
+			curi = i;
+		}
+	}
+	
+	for (j = 0; j < M; j++)
+			{
+		A[curi][j] = 9999;
+			}
+
+	for (i = 0; i < N; i++)
+	{
+		for (j = 0; j < M; j++) 
+			cout << A[i][j] << " ";
+		cout << endl;
+		}
+
+	/// 4 ///
+
+	cout << "¬веди размерность посл-ти: ";
+	const int n2_max = 20000;
+	int n2;
+	cin >> n2;
+	int posled[n2_max];
+	int  i2{}, j2{};
+	cout << "¬веди 5 чисел: ";
+	while (i2 < n2)
+	{
+		cin >> posled[i2];
+		i2++;
+	}
+
+	// удал€ем 
+
+	for (i2 = 0; i2 < n2; i2++)
+	{ 
+		if (firstDigit(posled[i2]) == (posled[i2]) % 10)
+			continue;
+		posled[j2] = posled[i2];
+		j2++;
+	}
+	n2 = j2;
+
+	// дублируем
+
+	for (i2 = 0; i2 < n2; i2++)
+	{
+		if (firstDigit(posled[i2]) == 3)
+		{
+			for (j2 = n2;j2 > i2;j2--)
+			{
+				posled[j2] = posled[j2 - 1];
+			}
+			i2++;
+			n2++;
+		}
+	}
+	for (int i2 = 0; i2 < n2; i2++)
+		cout << posled[i2] << '\t';
+	cout << endl;
+
+	return 0;
 }
